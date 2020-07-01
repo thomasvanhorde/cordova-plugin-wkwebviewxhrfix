@@ -1,18 +1,18 @@
 //
-//  CDVWKWebViewEngine+FileXhrFix.m
+//  CDVWebViewEngine+FileXhrFix.m
 //  HelloCordova
 //
 //  Created by Connor Pearson on 2/9/17.
 //
 //
 
-#import "CDVWKWebViewEngine+FileXhrFix.h"
+#import "CDVWebViewEngine+FileXhrFix.h"
 #import <objc/runtime.h>
 
-@implementation CDVWKWebViewEngine (FileXhrFix)
+@implementation CDVWebViewEngine (FileXhrFix)
 + (void)load {
     SEL selector = NSSelectorFromString(@"createConfigurationFromSettings:");
-    Method originalMethod = class_getInstanceMethod([CDVWKWebViewEngine class], selector);
+    Method originalMethod = class_getInstanceMethod([CDVWebViewEngine class], selector);
     IMP originalImp = method_getImplementation(originalMethod);
     typedef WKWebViewConfiguration* (*send_type)(id, SEL , NSDictionary*);
     send_type originalImpSend = (send_type)originalImp;
